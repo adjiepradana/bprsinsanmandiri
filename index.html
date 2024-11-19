@@ -197,7 +197,7 @@
     <div class="container">
         <div class="card">
             <h2>Saldo Anda</h2>
-            <div class="balance">Rp 10,000,000</div>
+            <div class="balance" id="mainBalance">Rp 10,000,000</div>
             <div class="button-group">
                 <button class="btn btn-primary" onclick="showModal('transfer')">Transfer</button>
                 <button class="btn btn-secondary" onclick="showModal('savings')">Menabung</button>
@@ -207,7 +207,7 @@
 
         <div class="card">
             <h2>Tabungan Syariah</h2>
-            <div class="balance">Rp 5,000,000</div>
+            <div class="balance" id="savingsBalance">Rp 5,000,000</div>
             <p>Bagi hasil: 7% per tahun</p>
         </div>
 
@@ -398,6 +398,7 @@
 
             // Update UI
             updateBalance();
+            updateSavingsBalance();
             updateTransactionHistory();
             hideModal('savings');
             
@@ -438,7 +439,11 @@
         }
 
         function updateBalance() {
-            document.querySelector('.balance').textContent = formatCurrency(balance);
+            document.querySelector('#mainBalance').textContent = formatCurrency(balance);
+        }
+
+        function updateSavingsBalance() {
+            document.querySelector('#savingsBalance').textContent = formatCurrency(savingsBalance);
         }
 
         function updateTransactionHistory() {
